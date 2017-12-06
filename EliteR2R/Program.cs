@@ -49,6 +49,8 @@ namespace EliteR2R
             IMongoCollection<BsonDocument> factions = database.GetCollection<BsonDocument>("factions");
             IMongoCollection<BsonDocument> systems = database.GetCollection<BsonDocument>("systems");
 
+            ESystem origins = new ESystem("Neto").LookUpSystem;
+
             BsonDocument origin = systems.Find(Builders<BsonDocument>.Filter.Eq("name", systemName)).FirstOrDefault();
             if ((origin.GetValue("name", new BsonString(string.Empty))).IsBsonNull)
             {
